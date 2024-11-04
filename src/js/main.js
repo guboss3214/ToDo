@@ -8,21 +8,20 @@ const taskList = document.querySelector('#taskList');
 const title = document.querySelector('#title');
 const total = document.querySelector('#total');
 
-let currentTask = 0;
-
-function openModal(){
+function toggleModal(){
     rotateBtn.classList.toggle('origin-center');
     rotateBtn.classList.toggle('rotate-45');
     modal.classList.toggle('hidden');
     modal.classList.toggle('flex');
+}
+
+function openModal(){
+    toggleModal();
     checkText();
 }
 
 function hideModal(){
-    modal.classList.toggle('hidden');
-    modal.classList.toggle('flex');
-    rotateBtn.classList.toggle('origin-center');
-    rotateBtn.classList.toggle('rotate-45');
+    toggleModal();
 }
 
 function checkText(){
@@ -39,14 +38,18 @@ function checkList(){
 
 setInterval(() => checkText(), 300);
 
+function clearInput(){
+    taskInput.value = '';
+    taskDescr.value = '';
+}
+
 function addTask(){
     const task = document.createElement('div');
     task.classList.add('task','flex','justify-between','border-b-2','border-gray-400','py-2','px-4');
     task.innerHTML = `<h2 class="text-3xl text-gray-8000">${taskInput.value}</h2> <p class="text-gray-700 text-base leading-relaxed mt-2 mb-4">${taskDescr.value}</p> <div class="flex gap-2"><button class="text-3xl text-gray-800" onclick="deleteTask(event)"><span class="material-symbols-outlined text-red-600 font-bold text-2xl">close</span></button> <button class="text-3xl text-gray-800" onclick="completeTask(event)"><span class="material-symbols-outlined text-green-500 font-bold text-2xl">check</span></button>`;
     taskList.prepend(task);
     total.textContent = taskList.children.length - 1;
-    taskInput.value = '';
-    taskDescr.value = '';
+    clearInput();
     checkList();
     hideModal();
 }
@@ -58,7 +61,6 @@ function deleteTask(e){
     total.innerHTML = taskList.children.length - 1;
     checkList();
 }
-
 
 function completeTask(e){
     const target = e.target;
