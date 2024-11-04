@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link href="./src/output.css" rel="stylesheet">
+    <title>ToDo app</title>
+</head>
+<body class="bg-orange-300 overflow-hidden">
+    <h1 class="text-4xl font-bold text-center my-4">ToDo</h1>
+    <h2 id="totalTask" class="text-2xl font-semibold text-gray-800 text-center my-4">ToDo: <span id="total">0</span></h2>
+    <div class="p-3 h-screen w-full flex justify-center ">
+        <div id="taskList" class="flex flex-col gap-2 px-8 py-3 bg-white rounded-lg h-2/3 w-3/4 overflow-auto">
+            <h2 id="title" class="text-2xl font-semibold text-gray-800 text-center my-4">List is empty <br> <span class="text-blue-600">Let's do the first task!</span></h2>
+        </div>    
+    </div>
+    <div id="modal" class="fixed inset-0 justify-center items-center bg-black bg-opacity-50 hidden">
+        <div class="bg-white rounded-lg shadow-lg p-6 w-96 text-center">
+            <h2 class="text-xl font-semibold mb-4">Create task</h2>
+            <div class="flex flex-col gap-3">
+                <input id="taskInput" type="text" placeholder="Enter a new task" class="flex-grow p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600" required/>
+                <textarea id="taskDescr" maxlength="50" type="text" placeholder="Enter a description..." class="flex-grow p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"></textarea>
+                <button id="addTaskButton" class="p-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none">Add Task</button>
+            </div>
+        </div>
+    </div>
+    <div id="add" class="flex justify-center items-center absolute bottom-3 right-3 bg-blue-600 rounded-full h-20 w-20 cursor-pointer hover:scale-110 ease-in duration-200"><span id="rotate" class="material-symbols-outlined text-white font-bold text-4xl ease-in duration-200">add</span></div>
+    <script src="src/js/main.js"></script>
+</body>
+</html>
