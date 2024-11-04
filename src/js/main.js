@@ -43,10 +43,10 @@ function clearInput(){
     taskDescr.value = '';
 }
 
-function addTask(){
+function addTaskHandler(){
     const task = document.createElement('div');
     task.classList.add('task','flex','justify-between','border-b-2','border-gray-400','py-2','px-4');
-    task.innerHTML = `<h2 class="text-3xl text-gray-8000">${taskInput.value}</h2> <p class="text-gray-700 text-base leading-relaxed mt-2 mb-4">${taskDescr.value}</p> <div class="flex gap-2"><button class="text-3xl text-gray-800" onclick="deleteTask(event)"><span class="material-symbols-outlined text-red-600 font-bold text-2xl">close</span></button> <button class="text-3xl text-gray-800" onclick="completeTask(event)"><span class="material-symbols-outlined text-green-500 font-bold text-2xl">check</span></button>`;
+    task.innerHTML = `<h2 class="text-3xl text-gray-8000">${taskInput.value}</h2> <p class="text-gray-700 text-base leading-relaxed mt-2 mb-4">${taskDescr.value}</p> <div class="flex gap-2"><button class="text-3xl text-gray-800" onclick="deleteTaskHandler(event)"><span class="material-symbols-outlined text-red-600 font-bold text-2xl">close</span></button> <button class="text-3xl text-gray-800" onclick="completeTaskHandler(event)"><span class="material-symbols-outlined text-green-500 font-bold text-2xl">check</span></button>`;
     taskList.prepend(task);
     total.textContent = taskList.children.length - 1;
     clearInput();
@@ -54,7 +54,7 @@ function addTask(){
     hideModal();
 }
 
-function deleteTask(e){
+function deleteTaskHandler(e){
     const target = e.target;
     let task = target.parentElement.parentElement.parentElement;
     taskList.removeChild(task);
@@ -62,7 +62,7 @@ function deleteTask(e){
     checkList();
 }
 
-function completeTask(e){
+function completeTaskHandler(e){
     const target = e.target;
     const task = target.parentElement.parentElement.parentElement;
     task.classList.add('bg-gray-200', 'text-gray-500', 'line-through', 'p-4', 'rounded-md', 'shadow-md');
@@ -70,8 +70,8 @@ function completeTask(e){
 
 function initLisnteners(){
     addBtn.addEventListener('click', openModal);
-    addTaskBtn.addEventListener('click', addTask);
-    editBtn.addEventListener('click', addTask);
+    addTaskBtn.addEventListener('click', addTaskHandler);
+    editBtn.addEventListener('click', addTaskHandler);
 }
 function init(){
     initLisnteners()
